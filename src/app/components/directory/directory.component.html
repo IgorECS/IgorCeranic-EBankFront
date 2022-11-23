@@ -1,0 +1,102 @@
+
+<div class="container" style="background-color: rgb(216, 220, 221);">
+
+
+<mat-tab-group>
+    <mat-tab>
+        <ng-template mat-tab-label>
+
+
+    <h1> EBankFront </h1>
+    
+     &nbsp;
+    <h3 style="color: rgb(118, 33, 33);background-position-x: center; background-color: rgb(190, 190, 190);"> Forma za unosenje, modifikovanje i brisanje podataka iz DB: </h3> &nbsp;
+
+    <div class="directory-container">
+        <div class="podaci-form">
+            <form #form="ngForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for=""> Ime </label>
+                    <input type="text"  name="imeKorisnika" [(ngModel)]="user.ime" required placeholder="Obavezno polje">
+                </div>
+                <div class="form-group">
+                    <label for=""> Prezime </label>
+                    <input type="text" name="prezimeKorisnika" [(ngModel)]="user.prezime" required  placeholder="Obavezno polje">
+                </div>
+                <div class="form-group">
+                    <label for=""> JMBG </label>
+                    <input type="text" name="maticniBroj" [(ngModel)]="user.jmbg" required placeholder="Obavezno polje sa 13 karaktera">
+                </div>
+                <div class="form-group">
+                    <label for=""> LK </label>
+                    <input type="text" name="brojLicneKarte" [(ngModel)]="user.lk" required placeholder="Obavezno polje">
+                </div>
+                <div class="form-group">
+                    <label for=""> Adresa </label>
+                    <input type="text" name="adresa" [(ngModel)]="user.adresa" required placeholder="Obavezno polje">
+                </div>
+                <div class="form-group">
+                    <label for=""> Mjesto </label>
+                    <input type="text" name="mjestoStanovanja" [(ngModel)]="user.mjesto" required placeholder="Obavezno polje">
+                </div>
+                <div class="form-group">
+                    <label for=""> Drzava </label>
+                    <input type="text" name="drzava" [(ngModel)]="user.drzava" required placeholder="Obavezno polje">
+                </div>
+                <div class="form-group">
+                    <label for=""> Telefon </label>
+                    <input type="text" name="brojTelefona" [(ngModel)]="user.brTelefona" required placeholder="Obavezno polje">
+                </div>
+                <div class="form-group-inline">
+                    <div>
+                        <label for="">Datum Rodjenja</label>
+                        <input type="text" name="datumRodjenja" [(ngModel)]="user.datumRodjenja" required placeholder="Obavezno polje">
+                    </div>
+                    <div>
+                        <label for="">Mjesto Rodjenja</label>
+                        <input type="text" name="mjestoRodjenja" [(ngModel)]="user.mjestoRodjenja" required placeholder="Obavezno polje">
+                    </div>
+                    <div>
+                        <label for="">Rezident</label>
+                        <input type="text" name="rezident" [(ngModel)]="user.rezident" required placeholder="Obavezno polje"> 
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary"(click)="updateUser(user)">Save</button>
+                    <!-- <button class="btn btn-primary">ADD</button> -->
+                    <button class="btn btn-warning" (click)="resetAllFields()"> Reset </button>
+                  
+
+                </div>
+            </form>
+        </div>
+
+
+        <div class="podaci-lista">
+
+            <div class="podaci-red" *ngFor="let user of users">
+                <div class="podaci-details" (click)="populateFields(user)">
+                    <span> {{user.ime}} </span>
+                    <span> {{user.prezime}} </span>
+                    <span> {{user.jmbg}} </span>
+                </div>
+                <div class="podaci-action">
+                    <a (click)="deleteUser(user.jmbg)"><i class="fa-solid fa-trash-can"></i> Delete </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </ng-template>
+    </mat-tab>
+
+    <!-- <mat-tab >
+        <ng-template mat-tab-label>
+        <h1>Dobro dosili u tab 2</h1>>
+        </ng-template >
+    </mat-tab>> -->
+
+    </mat-tab-group>
+
+    </div>
+    

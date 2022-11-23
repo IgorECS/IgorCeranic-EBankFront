@@ -1,0 +1,59 @@
+
+
+ <p> Podaci iz tabele CARDS: 
+
+
+    <!-- <label>JMBG</label>
+    <input type = "text" class = "form-control" [(ngModel)]="jmbg">
+    
+    <button class="btn btn-primary" [disabled]="jmbg === ''"
+    (click)="getAllByJMBG(jmbg)"> Find </button>>
+
+    <button class="btn btn-primary" [disabled]="jmbg === ''"
+    (click)=" jmbg = ''" > Reset </button>> -->
+
+
+<ul>
+    <li *ngFor="let account of accountList$">
+        {{account.transactions}}
+        
+
+    </li>
+</ul>
+
+
+
+
+
+
+<table>
+    <tr>
+        <th>Cardnumber</th>
+        <th>Account</th>
+        <th>Brand</th> 
+        <th>Valid_thru</th>
+        <th>Customer_id</th>
+        <th>Type</th>
+        <th>Kind</th>
+
+    </tr>
+    <!-- <p style="color:rgb(178, 180, 182)"> -->    
+
+   <tr *ngFor="let card of cardList;let i = index">
+        <!-- <td> {{i+1}} </td>>  -->
+        <td style="font-style: oblique; color:brown">{{card.card_number }}</td>
+        <td style="color:rgb(42, 165, 71)">{{card.account}}</td>
+        <td style="color:rgb(233, 193, 193)">{{card.brand}}</td>
+        <td style="color:rgb(42, 112, 165)">{{card.valid_thru}}</td>
+        <td style="color:rgb(165, 42, 42)">{{card.customer_id}}</td>
+        <td style="color:rgb(10, 10, 8)">{{card.type}}</td>
+        <td style="color:brown">{{card.kind}}</td>
+        
+    </tr>>
+    
+    <!-- </p> -->
+
+    </table>>
+
+
+    
