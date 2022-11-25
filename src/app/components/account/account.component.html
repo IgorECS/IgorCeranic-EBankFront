@@ -1,92 +1,67 @@
-
-<h1 style="color: rgb(87, 87, 255);">Preuzimanje podataka sa backend-a</h1>
+<h1 style="color: rgb(87, 87, 255)">Preuzimanje podataka sa backend-a</h1>
 
 <!-- {{myData | json}} -->
-<p>
-
-
-
-
-</p>
-<label>JMBG  </label>
-<input type = "text" class = "form-control" [(ngModel)]="jmbg">
+<p></p>
+<label>JMBG </label>
+<input type="text" class="form-control" [(ngModel)]="jmbg" />
 <!-- <p>{{jmbg}}</p> -->
-<button class="btn btn-primary" [disabled]="jmbg === ''"
-(click)="getInfo()"> Find </button>
+<button class="btn btn-primary" [disabled]="jmbg === ''" (click)="getInfo()">
+  Find
+</button>
 
-<button class="btn btn-primary" [disabled]="jmbg === ''"
-(click)=" jmbg = ''" > Reset </button>
+<button class="btn btn-primary" [disabled]="jmbg === ''" (click)="jmbg = ''">
+  Reset
+</button>
 
-
-
-
-
-
- 
-
-
- <ul>
-
-    <!-- <li *ngFor="let item of myData$ | async">
+<ul>
+  <!-- <li *ngFor="let item of myData$ | async">
         {{ item.stanje }}
         {{ item.brojRac }}
         
 
     </li> -->
 
-<label></label>
-    <li *ngFor="let item of myData$ | async">
-        Ime:
-        {{item.ime}}
-        <p></p>
-        Prezime:
-        {{item.prezime}}
-        <p></p>
-        Jmbg:
-        {{item.jmbg}}
-        <p></p>
-        LK:
-        {{item.lk}}
-        <p></p>
-        Adresa:
-        {{item.adresa}}
-        <p></p>
-        Mjesto:
-        {{item.mjesto}}
-        <p></p>
-        Drzava:
-        {{item.drzava}}
-        <p></p>
-        Br.Telefona:
-        {{item.brTelefona}}
-        <p></p>
-        Datum Rodjenja:
-        {{item.datumRodjenja}}
-        <p></p>
-        Mjesto rodjenja:
-        {{item.mjestoRodjenja}}
-        <p></p>
-        Rezident:
-        {{item.Rezident}}
+  <label></label>
+  <li *ngFor="let item of myData$ | async">
+    Ime:
+    {{ item.ime }}
+    <p></p>
+    Prezime:
+    {{ item.prezime }}
+    <p></p>
+    Jmbg:
+    {{ item.jmbg }}
+    <p></p>
+    LK:
+    {{ item.lk }}
+    <p></p>
+    Adresa:
+    {{ item.adresa }}
+    <p></p>
+    Mjesto:
+    {{ item.mjesto }}
+    <p></p>
+    Drzava:
+    {{ item.drzava }}
+    <p></p>
+    Br.Telefona:
+    {{ item.brTelefona }}
+    <p></p>
+    Datum Rodjenja:
+    {{ item.datumRodjenja }}
+    <p></p>
+    Mjesto rodjenja:
+    {{ item.mjestoRodjenja }}
+    <p></p>
+    Rezident:
+    {{ item.Rezident }}
+  </li>
+</ul>
+>
 
+<p></p>
 
-    </li>
-
-
- </ul>>
-
-
-<p>
-
-
-
-</p>
-
-
-
- 
-
- <!-- {{myData.map((account)=>(
+<!-- {{myData.map((account)=>(
       <p style="color:aqua">
         account.brojRac
         account.stanje
@@ -102,10 +77,8 @@
      ))}}
  ))}}
   -->
- 
- 
- 
- <!-- <p>
+
+<!-- <p>
    {{myData.brojRac}}
  </p>
 
