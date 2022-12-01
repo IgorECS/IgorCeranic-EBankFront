@@ -8,19 +8,22 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DirectoryComponent } from './components/directory/directory.component';
 import { MatTabsModule } from '@angular/material';
-import { CurrentAccountComponent } from './components/current-account/current-account.component';
 import { TransactionComponent } from './components/transaction/transaction.component';
 import { ReservationComponent } from './components/reservation/reservation.component';
+import { CurrentAccountComponent } from './components/current-account/current-account.component';
 @NgModule({
   declarations: [
     AppComponent,
     AccountComponent,
     CardComponent,
     DirectoryComponent,
-    CurrentAccountComponent,
+    AccountComponent,
     TransactionComponent,
     ReservationComponent,
+    CurrentAccountComponent,
   ],
+  providers: [],
+  bootstrap: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -29,7 +32,5 @@ import { ReservationComponent } from './components/reservation/reservation.compo
     HttpClientModule,
     MatTabsModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent],
 })
 export class AppModule {}

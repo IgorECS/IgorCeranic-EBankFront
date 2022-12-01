@@ -1,1 +1,214 @@
-<p>current-account works!</p>
+<!-- <p>current-account works!</p>
+{{ accounts | json }} -->
+
+<div
+  style="
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgba(200, 239, 246, 0.986);
+  "
+>
+  <div
+    style="
+      color: rgb(233, 110, 9);
+      margin: 1cm;
+      padding-left: 2cm;
+      padding-top: 1cm;
+      font-size: x-large;
+      text-align: center;
+    "
+  >
+    Dobrodosli na Vaš nalog!
+  </div>
+
+  <div
+    style="
+      margin: 100px;
+      display: flex;
+      /* width: 1600px; */
+      align-items: center;
+      justify-content: space-around;
+      background: rgba(17, 128, 203, 0.991);
+      padding: 50px;
+      border-radius: 2pc;
+      border-bottom-width: 1cm;
+    "
+  >
+    <!-- div sa tekucima racunima -->
+    <span
+      style="
+        color: rgb(255, 255, 255);
+        font-size: x-large;
+        margin-left: 20px;
+        padding: 50px;
+      "
+      >Aktivni racuni:
+    </span>
+    <li class="acc-field" *ngFor="let item of tekuciRacuni">
+      <button
+        style="color: red; width: 300px; height: 130px; cursor: pointer"
+        (click)="changeTab(item.brojRac)"
+      >
+        <span style="color: blue; font-size: medium">Broj racuna: </span>
+        <div style="font-size: large">{{ item.brojRac }}</div>
+        <span style="color: blue; font-size: medium">Stanje: </span>
+        <div style="color: green; font-size: large">
+          {{ item.stanje | number : "1.2-2" }}
+        </div>
+
+        <!-- <span style="color: blue; font-size: medium">Partija: </span>
+        <div style="font-size: large">{{ item.partija }}</div> -->
+      </button>
+    </li>
+  </div>
+  <div
+    style="
+      display: flex;
+      align-items: center;
+      margin: 50px;
+      flex-direction: column;
+    "
+  >
+    <!-- div o jednom tekucem racunu -->
+    <div
+      style="
+        height: 250px;
+        width: 600px;
+        background-color: rgba(200, 239, 246, 0.986);
+        padding: 40px;
+        border-radius: 1pc;
+        border-color: rgba(17, 128, 203, 0.991);
+        border-style: solid;
+        font-size: large;
+        margin: 10px;
+      "
+    >
+      <span
+        style="
+          flex-direction: column;
+          padding: 20px;
+          display: flex;
+          font-size: x-large;
+        "
+        >Podaci o tekucem racunu:</span
+      >
+      <br />
+      Broj Racuna: => {{ kliknutiRacun.brojRac }}
+      <br />
+      Datum Otvaranja => {{ kliknutiRacun.datumOtvaranja }}
+      <br />
+      Poslednja Uplata => {{ kliknutiRacun.datumPolsednjeUplate }} <br />Iznos
+      posl. plate => {{ kliknutiRacun.iznosPoslednjePlate }} <br />
+      Poslednja plata => {{ kliknutiRacun.datumPoslednjePlate }} <br />
+      Kamata => {{ kliknutiRacun.kamata }}
+    </div>
+    <div>
+      <button
+        style="margin: 20px; padding: 10px; width: 180px; font-size: medium"
+        (click)="showCards(kliknutiRacun.cards)"
+      >
+        Kartice
+      </button>
+      <button
+        style="margin: 20px; padding: 10px; width: 180px; font-size: medium"
+        (click)="showTransactions(kliknutiRacun.transactions)"
+      >
+        Transakcije
+      </button>
+      <button
+        style="margin: 20px; padding: 10px; width: 180px; font-size: medium"
+        (click)="showReservations(kliknutiRacun.reservations)"
+      >
+        Rezervacije
+      </button>
+    </div>
+    <div>
+      <div
+        *ngIf="tabCards"
+        style="
+          width: 1000px;
+          margin: 1cm;
+          padding: 60px;
+          border-radius: 3pc;
+          background-color: rgb(240, 238, 254);
+        "
+      >
+        <table>
+          <tr>
+            <th>Cardnumber</th>
+            <th>Account</th>
+            <th>Brand</th>
+            <th>Valid_thru</th>
+            <th>Customer_id</th>
+            <th>Type</th>
+            <th>Kind</th>
+          </tr>
+
+          <tr *ngFor="let card of kartice; let i = index">
+            <td style="font-style: oblique; color: brown">
+              {{ card.card_number }}
+            </td>
+            <td style="color: rgb(98, 43, 28)">{{ card.account }}</td>
+            <td style="color: rgb(78, 6, 6)">{{ card.brand }}</td>
+            <td style="color: rgb(42, 112, 165)">{{ card.valid_thru }}</td>
+            <td style="color: rgb(165, 42, 42)">{{ card.customer_id }}</td>
+            <td style="color: rgb(10, 10, 8)">{{ card.type }}</td>
+            <td style="color: brown">{{ card.kind }}</td>
+          </tr>
+        </table>
+        <!-- <li class="acc-field" *ngFor="let item of kartice"> -->
+        <!-- Number: {{ item.card_number }} Account: {{ item.account }} Brand:
+        {{ item.brand }} ValidThru: {{ item.valid_thru }} Customer ID:{{
+          item.customerId
+        }}
+        Type:{{ item.type }} Kind:{{ item.kind }} -->
+        <!-- </li> -->
+      </div>
+      <div
+        *ngIf="tabTransactions"
+        style="
+          margin: 1cm;
+          padding: 60px;
+          border-radius: 3pc;
+          background-color: rgb(240, 238, 254);
+        "
+      >
+        <table>
+          <tr>
+            <th>Datum</th>
+            <th>Val_Iznos</th>
+            <th>Opis</th>
+            <th>Alfa1</th>
+            <th>Provizija</th>
+            <th>DP</th>
+          </tr>
+          <tr *ngFor="let tran of transactions">
+            <td>{{ tran.datum }}</td>
+            <td>{{ tran.val_iznos }}</td>
+            <td>{{ tran.opis }}</td>
+            <td>{{ tran.alfa1 }}</td>
+            <td>{{ tran.provizija }}</td>
+            <td>{{ tran.dp }}</td>
+          </tr>
+        </table>
+      </div>
+      <div *ngIf="tabReservations">
+        <table>
+          <tr>
+            <th>Partija</th>
+            <th>Pan</th>
+            <th>Iznos</th>
+            <th>Datum Aktiviranja</th>
+          </tr>
+          <tr *ngFor="let reserv of reservations">
+            <td>{{ reserv.partija }}</td>
+            <td>{{ reserv.pan }}</td>
+            <td>{{ reserv.iznos }}</td>
+            <td>{{ reserv.dp }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

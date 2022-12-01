@@ -40,11 +40,21 @@ export class DirectoryComponent implements OnInit {
   tab1: any;
   tab2: any;
 
-  editForm = new FormGroup({
-    ime: new FormControl('', Validators.required),
-    prezime: new FormControl('', Validators.required),
-    // jmbg: new FormControl('',Validators.required,Validators.minLength,)
-  });
+  brojRac: any;
+  tekuciRacuni: any[] = [];
+  kliknutiRacun: any;
+
+  // editForm = new FormGroup({
+  //   ime: new FormControl('', Validators.required),
+  //   prezime: new FormControl('', Validators.required),
+  //   // jmbg: new FormControl('',Validators.required,Validators.minLength,)
+  // });
+
+  getThisAccount() {
+    this.http.getThisAccount().subscribe((response) => {
+      this.tekuciRacuni = response;
+    });
+  }
 
   changeTabToFirst(): void {
     this.tab1 = true;
